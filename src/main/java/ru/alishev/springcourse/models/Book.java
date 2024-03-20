@@ -38,7 +38,7 @@ public class Book {
 
     @Column(name = "taken_at")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date takenAt;
+    private LocalDateTime takenAt;
 
     @Transient
     private boolean isOverdue;
@@ -52,15 +52,15 @@ public class Book {
     }
 
     public boolean isOverdue() {
-//        LocalDateTime now = LocalDateTime.now();
-//        LocalDateTime tenDaysAgo = now.minusDays(10);
-//        return takenAt.isBefore(tenDaysAgo);
-        Date now = new Date();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(now);
-        calendar.add(Calendar.DAY_OF_MONTH, -10);
-        Date tenDaysAgo = calendar.getTime();
-        return takenAt.before(tenDaysAgo);
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime tenDaysAgo = now.minusDays(10);
+        return takenAt.isBefore(tenDaysAgo);
+//        Date now = new Date();
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.setTime(now);
+//        calendar.add(Calendar.DAY_OF_MONTH, -10);
+//        Date tenDaysAgo = calendar.getTime();
+//        return takenAt.before(tenDaysAgo);
     }
 
     public int getId() {
@@ -103,11 +103,11 @@ public class Book {
         this.owner = owner;
     }
 
-    public Date getTakenAt() {
+    public LocalDateTime getTakenAt() {
         return takenAt;
     }
 
-    public void setTakenAt(Date takenAt) {
+    public void setTakenAt(LocalDateTime takenAt) {
         this.takenAt = takenAt;
     }
 }

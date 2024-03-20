@@ -78,7 +78,7 @@ public class BookService {
         if(optionalBook.isPresent()){
             Book book = optionalBook.get();
             book.setOwner(selectedPerson);
-            book.setTakenAt(new Date());
+            book.setTakenAt(LocalDateTime.now());
             booksRepository.save(book);
         }
     }
