@@ -4,6 +4,11 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 
 @Entity
 @Table(name = "Book")
@@ -31,12 +36,31 @@ public class Book {
     @JoinColumn(name = "person_id", referencedColumnName = "id")
     private Person owner;
 
+    @Column(name = "taken_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date takenAt;
+
+    @Transient
+    private boolean isOverdue;
+
     public Book() {}
 
     public Book(String title, String author, int year) {
         this.title = title;
         this.author = author;
         this.year = year;
+    }
+
+    public boolean isOverdue() {
+//        LocalDateTime now = LocalDateTime.now();
+//        LocalDateTime tenDaysAgo = now.minusDays(10);
+//        return takenAt.isBefore(tenDaysAgo);
+        Date now = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(now);
+        calendar.add(Calendar.DAY_OF_MONTH, -10);
+        Date tenDaysAgo = calendar.getTime();
+        return takenAt.before(tenDaysAgo);
     }
 
     public int getId() {
@@ -77,5 +101,13 @@ public class Book {
 
     public void setOwner(Person owner) {
         this.owner = owner;
+    }
+
+    public Date getTakenAt() {
+        return takenAt;
+    }
+
+    public void setTakenAt(Date takenAt) {
+        this.takenAt = takenAt;
     }
 }
