@@ -18,7 +18,7 @@
     <br/>
     <table th:each="book : ${books}">
         <tr>
-            <td th:style="${book.isOverdue() ? 'color: red' : ''}">
+            <td th:style="${book.isOverdue() ? 'color: red' : 'color: black'}">
                 <span th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYear()}">owner</span>
             </td>
         </tr>

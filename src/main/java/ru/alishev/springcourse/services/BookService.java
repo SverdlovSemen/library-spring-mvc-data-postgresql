@@ -62,8 +62,13 @@ public class BookService {
     }
 
     @Transactional
-    public void update(int id, Book updatedBook){
+    public void update(int id, Book updatedBook){// Объект пришел с формы, поэтому нужно сделать save этого объекта
+        Book bookToBeUpdated = booksRepository.findById(id).get();
+
+        //Добавляем по сути новую книгу (которая не находится в Persistence context), поэтому нужен save()
         updatedBook.setId(id);
+        updatedBook.setOwner(bookToBeUpdated.getOwner());// чтобы не терялась связь при обновлении
+
         booksRepository.save(updatedBook);
     }
 
@@ -74,21 +79,22 @@ public class BookService {
 
     @Transactional
     public void assign(int id, Person selectedPerson){
-        Optional<Book> optionalBook = booksRepository.findById(id);
-        if(optionalBook.isPresent()){
-            Book book = optionalBook.get();
-            book.setOwner(selectedPerson);
-            book.setTakenAt(LocalDateTime.now());
-            booksRepository.save(book);
-        }
+        booksRepository.findById(id).ifPresent(
+                book -> {
+                    book.setOwner(selectedPerson);
+                    book.setTakenAt(LocalDateTime.now());
+                });
     }
 
     @Transactional
     public void release(int id){
-        Book book = findOne(id);
-        book.setOwner(null);
-        book.setTakenAt(null);
-        booksRepository.save(book);
+        // Книга находится в persistence context. Поэтому вызывать booksRepository.save(book); не нужно
+        booksRepository.findById(id).ifPresent(
+                book -> {
+                    book.setOwner(null);
+                    book.setTakenAt(null);
+                }
+        );
     }
 
     public List<Book> findByTitleStartingWith(String startingWith){

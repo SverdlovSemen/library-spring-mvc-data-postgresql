@@ -40,8 +40,8 @@ public class Book {
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime takenAt;
 
-    @Transient
-    private boolean isOverdue;
+//    @Transient
+//    private boolean isOverdue;
 
     public Book() {}
 
@@ -55,12 +55,6 @@ public class Book {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime tenDaysAgo = now.minusDays(10);
         return takenAt.isBefore(tenDaysAgo);
-//        Date now = new Date();
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.setTime(now);
-//        calendar.add(Calendar.DAY_OF_MONTH, -10);
-//        Date tenDaysAgo = calendar.getTime();
-//        return takenAt.before(tenDaysAgo);
     }
 
     public int getId() {

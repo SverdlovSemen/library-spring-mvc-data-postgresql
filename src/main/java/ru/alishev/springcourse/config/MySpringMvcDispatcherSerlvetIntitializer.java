@@ -10,9 +10,6 @@ import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import java.util.EnumSet;
 
-/**
- * @author Neil Alishev
- */
 public class MySpringMvcDispatcherSerlvetIntitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
