@@ -1,4 +1,4 @@
-package ru.alishev.springcourse.config;
+package ru.sverdlov.library.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -26,11 +26,11 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan("ru.alishev.springcourse")
+@ComponentScan("ru.sverdlov.library")
 @PropertySource("classpath:hibernate.properties")
 @EnableTransactionManagement // нужно чтобы транзакции управлялись спрингом, теперь мы не будем самостоятельно
 // начинать и заканчивать транзакции. Будем использовать спец. аннотацию
-@EnableJpaRepositories("ru.alishev.springcourse.repositories")
+@EnableJpaRepositories("ru.sverdlov.library.repositories")
 @EnableWebMvc
 public class SpringConfig implements WebMvcConfigurer {
 

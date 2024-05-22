@@ -1,17 +1,16 @@
-package ru.alishev.springcourse.services;
+package ru.sverdlov.library.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.alishev.springcourse.models.Book;
-import ru.alishev.springcourse.models.Person;
-import ru.alishev.springcourse.repositories.BooksRepository;
-import ru.alishev.springcourse.repositories.PeopleRepository;
+import ru.sverdlov.library.models.Book;
+import ru.sverdlov.library.models.Person;
+import ru.sverdlov.library.repositories.BooksRepository;
+import ru.sverdlov.library.repositories.PeopleRepository;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 

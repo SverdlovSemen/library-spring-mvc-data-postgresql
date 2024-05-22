@@ -1,13 +1,10 @@
-package ru.alishev.springcourse.repositories;
+package ru.sverdlov.library.repositories;
 
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
-import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ru.alishev.springcourse.models.Book;
-import ru.alishev.springcourse.models.Person;
+import ru.sverdlov.library.models.Book;
+import ru.sverdlov.library.models.Person;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 @Repository

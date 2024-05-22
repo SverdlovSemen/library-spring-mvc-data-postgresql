@@ -1,12 +1,11 @@
-package ru.alishev.springcourse.util;
+package ru.sverdlov.library.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import ru.alishev.springcourse.models.Person;
-import ru.alishev.springcourse.services.PeopleService;
-
+import ru.sverdlov.library.models.Person;
+import ru.sverdlov.library.services.PeopleService;
 
 @Component
 public class PersonValidator implements Validator {

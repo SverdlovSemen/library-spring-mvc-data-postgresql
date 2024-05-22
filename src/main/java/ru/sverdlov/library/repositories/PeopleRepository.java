@@ -1,8 +1,8 @@
-package ru.alishev.springcourse.repositories;
+package ru.sverdlov.library.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ru.alishev.springcourse.models.Person;
+import ru.sverdlov.library.models.Person;
 
 import java.util.List;
 

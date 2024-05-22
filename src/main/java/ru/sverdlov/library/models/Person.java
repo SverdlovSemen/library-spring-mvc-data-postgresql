@@ -1,16 +1,12 @@
-package ru.alishev.springcourse.models;
+package ru.sverdlov.library.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
-/**
- * @author Neil Alishev
- */
 @Entity
 @Table(name = "Person")
 public class Person {
